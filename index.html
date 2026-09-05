@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>待办清单</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <p class="eyebrow">Todo</p>
+      <h1>待办清单</h1>
+      <p class="subtitle">添加任务、勾选完成、随时删除</p>
+    </header>
+
+    <form class="add-form" id="todo-form" autocomplete="off">
+      <label class="sr-only" for="todo-input">新任务</label>
+      <input
+        id="todo-input"
+        type="text"
+        name="task"
+        placeholder="写下今天要做的事…"
+        maxlength="120"
+        required
+      >
+      <button type="submit">添加</button>
+    </form>
+
+    <section class="stats" aria-live="polite">
+      <span id="remaining-count">0 项待完成</span>
+      <span class="dot" aria-hidden="true"></span>
+      <span id="total-count">共 0 项</span>
+    </section>
+
+    <ul class="todo-list" id="todo-list"></ul>
+
+    <p class="empty-state" id="empty-state">还没有任务，先添加一条吧。</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+:root {
+  --bg: #f4f1ea;
+  --card: #fffcf7;
+  --ink: #1f2933;
+  --muted: #6b7280;
+  --line: #e7e0d4;
+  --accent: #2f6f5e;
+  --accent-hover: #25584b;
+  --danger: #b54747;
+  --danger-hover: #933838;
+  --done: #8a9199;
+  --shadow: 0 18px 50px rgba(47, 42, 34, 0.08);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #f8e7d4 0%, transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, #dceee6 0%, transparent 50%),
+    var(--bg);
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.app {
+  width: min(560px, 100%);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 36px 28px 28px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  margin: 4px 0 8px;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.subtitle,
+.stats,
+.empty-state {
+  color: var(--muted);
+}
+
+.add-form {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0 18px;
+}
+
+.add-form input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0 16px;
+  font-size: 1rem;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(47, 111, 94, 0.12);
+}
+
+.add-form button,
+.delete-btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.add-form button {
+  height: 48px;
+  padding: 0 18px;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--accent);
+}
+
+.add-form button:hover {
+  background: var(--accent-hover);
+}
+
+.add-form button:active {
+  transform: translateY(1px);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #c9bfb0;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  animation: rise 0.22s ease;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-item input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c9bfb0;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.todo-item input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.todo-item input[type="checkbox"]:checked::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.todo-text {
+  flex: 1;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.todo-item.completed .todo-text {
+  color: var(--done);
+  text-decoration: line-through;
+}
+
+.delete-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  color: var(--danger);
+  background: transparent;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.delete-btn:hover {
+  background: #f8eaea;
+  color: var(--danger-hover);
+}
+
+.empty-state {
+  display: none;
+  text-align: center;
+  padding: 28px 8px 12px;
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 28px 18px 20px;
+  }
+
+  .add-form {
+    flex-direction: column;
+  }
+}
